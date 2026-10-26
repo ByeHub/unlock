@@ -94,26 +94,23 @@
                     timerStarted = false;
                     
                     if (currentStep < 3) {
-                        // ඊළඟ පියවරට (Step 2 හෝ Step 3) යොමු කිරීම
                         currentStep++;
                         stepIndicator.innerHTML = `STEP ${currentStep} OF 3`;
                         instructionText.innerHTML = `සාර්ථකයි! දැන් ${currentStep} වන දැන්වීම නරඹන්න.`;
                         adBtn.innerHTML = `📢 Visit Advertisement ${currentStep}`;
                         timerText.innerHTML = "දැන්වීම බැලීමට ඉහත බටන් එක ඔබන්න.";
                     } else {
-                        // පියවර 3ම අවසන් වූ පසු
                         stepIndicator.innerHTML = "✅ ALL STEPS COMPLETED!";
                         instructionText.innerHTML = "සියලුම දැන්වීම් බැලීම සාර්ථකයි!";
-                        adBtn.style.display = "none"; // Ad button එක ඉවත් කිරීම
+                        adBtn.style.display = "none";
                         timerText.innerHTML = "දැන් ඔබට වීඩියෝව ලබාගත හැක.";
                         getVideoBtn.classList.remove("disabled");
                         
-                        // URL එකේ ඇති video ID එක ලබා ගැනීම
                         const urlParams = new URLSearchParams(window.location.search);
                         const msgId = urlParams.get('id');
                         
-                        // බොට්ගේ Username එක මෙතැනට දාන්න (උදා: t.me/YourBotUsername)
-                        getVideoBtn.href = `https://t.me/YourBotUsername?start=get_${msgId}`;
+                        // ඔබේ බොට්ගේ නියම Username එක (photohubLKbot) මෙහි හරියටම යොදා ඇත
+                        getVideoBtn.href = `https://t.me/photohubLKbot?start=get_${msgId}`;
                     }
                 }
             }, 1000);
